@@ -6,3 +6,4 @@
 - [Tailwind](https://tailwindcss.com/)
 - [Shadcn/ui](https://ui.shadcn.com/)
 - [Clerk Auth](https://clerk.com/)
+- [Zustand](https://github.com/pmndrs/zustand)
