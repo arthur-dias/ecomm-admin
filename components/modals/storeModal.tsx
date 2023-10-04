@@ -1,7 +1,10 @@
 'use client'
 
+import { useState } from 'react'
+import axios from 'axios'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { toast } from 'react-hot-toast'
 import { useForm } from 'react-hook-form'
 import { useStoreModal } from '@/hooks/useStoreModal'
 import { Modal } from '@/components/ui/modal'
@@ -23,6 +26,8 @@ const formSchema = z.object({
 })
 
 export const StoreModal = () => {
+  const [loading, setLoading] = useState(false)
+
   const storeModal = useStoreModal()
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -33,7 +38,16 @@ export const StoreModal = () => {
   })
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values)
+    try {
+      setLoading(true)
+
+      const response = await axios.post('/api/stores', values)
+      toast.success('Loja criada com sucesso')
+    } catch (error) {
+      toast.error('Algo deu errado')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -53,17 +67,26 @@ export const StoreModal = () => {
                   <FormItem>
                     <FormLabel>Nome da loja</FormLabel>
                     <FormControl>
-                      <Input placeholder='E-Commerce' {...field} />
+                      <Input
+                        disabled={loading}
+                        placeholder='E-Commerce'
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
               <div className='pt-6 space-x-2 flex items-center justify-end w-full'>
-                <Button variant='outline' onClick={storeModal.onClose}>
+                <Button
+                  disabled={loading}
+                  variant='outline'
+                  onClick={storeModal.onClose}>
                   Cancelar
                 </Button>
-                <Button type='submit'>Continuar</Button>
+                <Button disabled={loading} type='submit'>
+                  Continuar
+                </Button>
               </div>
             </form>
           </Form>
