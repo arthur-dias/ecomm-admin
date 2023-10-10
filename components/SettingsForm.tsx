@@ -6,6 +6,7 @@ import axios from 'axios'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
+import { useOrigin } from '@/hooks/useOrigin'
 import toast from 'react-hot-toast'
 import { Store } from '@prisma/client'
 import { Heading } from '@/components/ui/heading'
@@ -39,6 +40,7 @@ type SettingsFormValues = z.infer<typeof formSchema>
 export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
   const params = useParams()
   const router = useRouter()
+  const origin = useOrigin()
 
   const [open, setOpen] = useState(false)
   const [loading, setLoading] = useState(false)
