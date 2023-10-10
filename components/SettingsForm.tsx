@@ -21,6 +21,7 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { AlertModal } from '@/components/modals/alertModal'
+import { ApiAlert } from '@/components/ui/apiAlert'
 import { Trash } from 'lucide-react'
 
 interface SettingsFormProps {
@@ -123,6 +124,12 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
           </Button>
         </form>
       </Form>
+      <Separator />
+      <ApiAlert
+        title='NEXT_PUBLIC_API_URL'
+        description={`${origin}/api/${params.storeId}`}
+        variant='public'
+      />
     </>
   )
 }
