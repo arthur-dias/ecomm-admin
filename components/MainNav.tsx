@@ -25,7 +25,7 @@ export function MainNav({
     {
       href: `/${params.storeId}/banners`,
       label: 'Banners',
-      active: pathName === `/${params.storeId}/banner`,
+      active: pathName === `/${params.storeId}/banners`,
     },
   ]
 
