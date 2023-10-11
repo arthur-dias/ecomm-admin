@@ -22,6 +22,11 @@ export function MainNav({
       label: 'Configurações',
       active: pathName === `/${params.storeId}/configuracoes`,
     },
+    {
+      href: `/${params.storeId}/banners`,
+      label: 'Banners',
+      active: pathName === `/${params.storeId}/banner`,
+    },
   ]
 
   return (
