@@ -6,6 +6,7 @@ import { Heading } from '@/components/ui/heading'
 import { Separator } from '@/components/ui/separator'
 import { BannerColumn, columns } from '@/components/Columns'
 import { DataTable } from '@/components/ui/dataTable'
+import { ApiList } from '@/components/ui/apiList'
 import { Plus } from 'lucide-react'
 
 interface BannerClientProps {
@@ -30,6 +31,9 @@ export const BannerClient: React.FC<BannerClientProps> = ({ data }) => {
       </div>
       <Separator />
       <DataTable columns={columns} data={data} searchKey='label' />
+      <Heading title='API' description='API dos banners' />
+      <Separator />
+      <ApiList entityName='banners' entityIdName='bannerId' />
     </>
   )
 }
