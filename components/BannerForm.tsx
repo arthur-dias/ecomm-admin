@@ -6,7 +6,6 @@ import axios from 'axios'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-import { useOrigin } from '@/hooks/useOrigin'
 import toast from 'react-hot-toast'
 import { Banner } from '@prisma/client'
 import { Heading } from '@/components/ui/heading'
@@ -41,7 +40,6 @@ type BannerFormValues = z.infer<typeof formSchema>
 export const BannerForm: React.FC<BannerFormProps> = ({ initialData }) => {
   const params = useParams()
   const router = useRouter()
-  const origin = useOrigin()
 
   const [open, setOpen] = useState(false)
   const [loading, setLoading] = useState(false)
