@@ -88,7 +88,7 @@ export const BannerForm: React.FC<BannerFormProps> = ({ initialData }) => {
 
       await axios.delete(`/api/${params.storeId}/banners/${params.bannerId}`)
       router.refresh()
-      router.push('/')
+      router.push(`/${params.storeId}/banners`)
       toast.success('Banner excluído')
     } catch (error) {
       toast.error(
@@ -163,7 +163,6 @@ export const BannerForm: React.FC<BannerFormProps> = ({ initialData }) => {
           </Button>
         </form>
       </Form>
-      <Separator />
     </>
   )
 }
