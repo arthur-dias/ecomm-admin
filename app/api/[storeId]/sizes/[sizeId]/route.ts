@@ -4,49 +4,49 @@ import { NextResponse } from 'next/server'
 
 export async function GET(
   req: Request,
-  { params }: { params: { bannerId: string } }
+  { params }: { params: { sizeId: string } }
 ) {
   try {
-    if (!params.bannerId) {
-      return new NextResponse('Banner id is required', { status: 400 })
+    if (!params.sizeId) {
+      return new NextResponse('Size id is required', { status: 400 })
     }
 
-    const banner = await prismadb.banner.findUnique({
+    const size = await prismadb.size.findUnique({
       where: {
-        id: params.bannerId,
+        id: params.sizeId,
       },
     })
 
-    return NextResponse.json(banner)
+    return NextResponse.json(size)
   } catch (error) {
-    console.log('[BANNER_GET]', error)
+    console.log('[SIZE_GET]', error)
     return new NextResponse('Internal error', { status: 500 })
   }
 }
 export async function PATCH(
   req: Request,
-  { params }: { params: { storeId: string; bannerId: string } }
+  { params }: { params: { storeId: string; sizeId: string } }
 ) {
   try {
     const { userId } = auth()
     const body = await req.json()
 
-    const { label, imageUrl } = body
+    const { name, value } = body
 
     if (!userId) {
       return new NextResponse('Unauthenticated', { status: 401 })
     }
 
-    if (!label) {
-      return new NextResponse('Label is required', { status: 400 })
+    if (!name) {
+      return new NextResponse('Name is required', { status: 400 })
     }
 
-    if (!imageUrl) {
-      return new NextResponse('Image URL is required', { status: 400 })
+    if (!value) {
+      return new NextResponse('Value is required', { status: 400 })
     }
 
-    if (!params.bannerId) {
-      return new NextResponse('Banner id is required', { status: 400 })
+    if (!params.sizeId) {
+      return new NextResponse('Size id is required', { status: 400 })
     }
 
     const storeByUserId = await prismadb.store.findFirst({
@@ -60,26 +60,26 @@ export async function PATCH(
       return new NextResponse('Unauthorized', { status: 403 })
     }
 
-    const banner = await prismadb.banner.updateMany({
+    const size = await prismadb.size.updateMany({
       where: {
-        id: params.bannerId,
+        id: params.sizeId,
       },
       data: {
-        label,
-        imageUrl,
+        name,
+        value,
       },
     })
 
-    return NextResponse.json(banner)
+    return NextResponse.json(size)
   } catch (error) {
-    console.log('[BANNER_PATCH]', error)
+    console.log('[SIZE_PATCH]', error)
     return new NextResponse('Internal error', { status: 500 })
   }
 }
 
 export async function DELETE(
   req: Request,
-  { params }: { params: { storeId: string; bannerId: string } }
+  { params }: { params: { storeId: string; sizeId: string } }
 ) {
   try {
     const { userId } = auth()
@@ -88,8 +88,8 @@ export async function DELETE(
       return new NextResponse('Unauthenticated', { status: 401 })
     }
 
-    if (!params.bannerId) {
-      return new NextResponse('Banner id is required', { status: 400 })
+    if (!params.sizeId) {
+      return new NextResponse('Size id is required', { status: 400 })
     }
 
     const storeByUserId = await prismadb.store.findFirst({
@@ -103,15 +103,15 @@ export async function DELETE(
       return new NextResponse('Unauthorized', { status: 403 })
     }
 
-    const banner = await prismadb.banner.deleteMany({
+    const size = await prismadb.size.deleteMany({
       where: {
-        id: params.bannerId,
+        id: params.sizeId,
       },
     })
 
-    return NextResponse.json(banner)
+    return NextResponse.json(size)
   } catch (error) {
-    console.log('[BANNER_DELETE]', error)
+    console.log('[SIZE_DELETE]', error)
     return new NextResponse('Internal error', { status: 500 })
   }
 }

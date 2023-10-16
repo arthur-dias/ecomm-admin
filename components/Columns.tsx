@@ -3,6 +3,7 @@
 import { ColumnDef } from '@tanstack/react-table'
 import { CellActionBanner } from '@/components/CellActionBanner'
 import { CellActionCategory } from '@/components/CellActionCategory'
+import { CellActionSize } from '@/components/CellActionSize'
 
 export type BannerColumn = {
   id: string
@@ -49,5 +50,31 @@ export const categoryColumns: ColumnDef<CategoryColumn>[] = [
   {
     id: 'actions',
     cell: ({ row }) => <CellActionCategory data={row.original} />,
+  },
+]
+
+export type SizeColumn = {
+  id: string
+  name: string
+  value: string
+  createdAt: string
+}
+
+export const sizeColumns: ColumnDef<SizeColumn>[] = [
+  {
+    accessorKey: 'name',
+    header: 'Nome',
+  },
+  {
+    accessorKey: 'value',
+    header: 'Value',
+  },
+  {
+    accessorKey: 'createdAt',
+    header: 'Data de upload',
+  },
+  {
+    id: 'actions',
+    cell: ({ row }) => <CellActionSize data={row.original} />,
   },
 ]
