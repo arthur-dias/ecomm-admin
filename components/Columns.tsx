@@ -1,7 +1,8 @@
 'use client'
 
 import { ColumnDef } from '@tanstack/react-table'
-import { CellAction } from '@/components/CellAction'
+import { CellActionBanner } from '@/components/CellActionBanner'
+import { CellActionCategory } from '@/components/CellActionCategory'
 
 export type BannerColumn = {
   id: string
@@ -9,7 +10,7 @@ export type BannerColumn = {
   createdAt: string
 }
 
-export const columns: ColumnDef<BannerColumn>[] = [
+export const bannerColumns: ColumnDef<BannerColumn>[] = [
   {
     accessorKey: 'label',
     header: 'Nome',
@@ -20,6 +21,33 @@ export const columns: ColumnDef<BannerColumn>[] = [
   },
   {
     id: 'actions',
-    cell: ({ row }) => <CellAction data={row.original} />,
+    cell: ({ row }) => <CellActionBanner data={row.original} />,
+  },
+]
+
+export type CategoryColumn = {
+  id: string
+  name: string
+  bannerLabel: string
+  createdAt: string
+}
+
+export const categoryColumns: ColumnDef<CategoryColumn>[] = [
+  {
+    accessorKey: 'name',
+    header: 'Nome',
+  },
+  {
+    accessorKey: 'banner',
+    header: 'Banner',
+    cell: ({ row }) => row.original.bannerLabel,
+  },
+  {
+    accessorKey: 'createdAt',
+    header: 'Data de upload',
+  },
+  {
+    id: 'actions',
+    cell: ({ row }) => <CellActionCategory data={row.original} />,
   },
 ]

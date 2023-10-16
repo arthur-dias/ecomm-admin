@@ -16,11 +16,11 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { Copy, Edit, MoreHorizontal, Trash } from 'lucide-react'
 
-interface CellActionProps {
+interface CellActionBannerProps {
   data: BannerColumn
 }
 
-export const CellAction: React.FC<CellActionProps> = ({ data }) => {
+export const CellActionBanner: React.FC<CellActionBannerProps> = ({ data }) => {
   const router = useRouter()
   const params = useParams()
 
@@ -29,7 +29,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
 
   const onCopy = (id: string) => {
     navigator.clipboard.writeText(id)
-    toast.success('Id do banner copiado')
+    toast.success('Id copiada')
   }
 
   const onDelete = async () => {
