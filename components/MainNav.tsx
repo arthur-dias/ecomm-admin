@@ -37,6 +37,11 @@ export function MainNav({
       label: 'Tamanhos',
       active: pathName === `/${params.storeId}/Tamanhos`,
     },
+    {
+      href: `/${params.storeId}/cores`,
+      label: 'Cores',
+      active: pathName === `/${params.storeId}/Cores`,
+    },
   ]
 
   return (

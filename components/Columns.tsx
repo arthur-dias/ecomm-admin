@@ -4,6 +4,7 @@ import { ColumnDef } from '@tanstack/react-table'
 import { CellActionBanner } from '@/components/CellActionBanner'
 import { CellActionCategory } from '@/components/CellActionCategory'
 import { CellActionSize } from '@/components/CellActionSize'
+import { CellActionColor } from '@/components/CellActionColor'
 
 export type BannerColumn = {
   id: string
@@ -67,7 +68,7 @@ export const sizeColumns: ColumnDef<SizeColumn>[] = [
   },
   {
     accessorKey: 'value',
-    header: 'Value',
+    header: 'Valor',
   },
   {
     accessorKey: 'createdAt',
@@ -76,5 +77,40 @@ export const sizeColumns: ColumnDef<SizeColumn>[] = [
   {
     id: 'actions',
     cell: ({ row }) => <CellActionSize data={row.original} />,
+  },
+]
+
+export type ColorColumn = {
+  id: string
+  name: string
+  value: string
+  createdAt: string
+}
+
+export const colorColumns: ColumnDef<ColorColumn>[] = [
+  {
+    accessorKey: 'name',
+    header: 'Nome',
+  },
+  {
+    accessorKey: 'value',
+    header: 'Cor',
+    cell: ({ row }) => (
+      <div className='flex items-center gap-x-2'>
+        {row.original.value}
+        <div
+          className='h-6 w-6 rounded-full border'
+          style={{ backgroundColor: row.original.value }}
+        />
+      </div>
+    ),
+  },
+  {
+    accessorKey: 'createdAt',
+    header: 'Data de upload',
+  },
+  {
+    id: 'actions',
+    cell: ({ row }) => <CellActionColor data={row.original} />,
   },
 ]
