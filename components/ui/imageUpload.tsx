@@ -65,7 +65,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
               variant='secondary'
               onClick={onClick}>
               <ImagePlus className='h-4 w-4 mr-2' />
-              Adicionar banner
+              Adicionar imagem
             </Button>
           )
         }}
