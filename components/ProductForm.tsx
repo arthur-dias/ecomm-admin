@@ -322,7 +322,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                     />
                   </FormControl>
                   <div className='space-y-1 leading-none'>
-                    <FormLabel>Featured</FormLabel>
+                    <FormLabel>Em destaque</FormLabel>
                     <FormDescription>
                       Esse produto irá aparecer na página inicial
                     </FormDescription>

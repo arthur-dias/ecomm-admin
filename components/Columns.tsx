@@ -139,7 +139,7 @@ export const productColumns: ColumnDef<ProductColumn>[] = [
   },
   {
     accessorKey: 'isFeatured',
-    header: 'Featured',
+    header: 'Em destaque',
   },
   {
     accessorKey: 'price',
