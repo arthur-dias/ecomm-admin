@@ -18,11 +18,6 @@ export function MainNav({
       active: pathName === `/${params.storeId}`,
     },
     {
-      href: `/${params.storeId}/configuracoes`,
-      label: 'Configurações',
-      active: pathName === `/${params.storeId}/configuracoes`,
-    },
-    {
       href: `/${params.storeId}/banners`,
       label: 'Banners',
       active: pathName === `/${params.storeId}/banners`,
@@ -46,6 +41,16 @@ export function MainNav({
       href: `/${params.storeId}/produtos`,
       label: 'Produtos',
       active: pathName === `/${params.storeId}/Produtos`,
+    },
+    {
+      href: `/${params.storeId}/pedidos`,
+      label: 'Pedidos',
+      active: pathName === `/${params.storeId}/Pedidos`,
+    },
+    {
+      href: `/${params.storeId}/configuracoes`,
+      label: 'Configurações',
+      active: pathName === `/${params.storeId}/configuracoes`,
     },
   ]
 
