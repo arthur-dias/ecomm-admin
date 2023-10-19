@@ -1,11 +1,13 @@
 import { getTotalRevenue } from '@/actions/getTotalRevenue'
 import { formatter } from '@/lib/utils'
+import { getSalesCount } from '@/actions/getSalesCount'
+import { getStockCount } from '@/actions/getStockCount'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Heading } from '@/components/ui/heading'
 import { Separator } from '@/components/ui/separator'
+import { Overview } from '@/components/Overview'
 import { CreditCard, Package } from 'lucide-react'
-import { getSalesCount } from '@/actions/getSalesCount'
-import { getStockCount } from '@/actions/getStockCount'
+import { getGraphRevenue } from '@/actions/getGraphRevenue'
 
 interface DashboardPageProps {
   params: { storeId: string }
@@ -15,6 +17,7 @@ const DashboardPage: React.FC<DashboardPageProps> = async ({ params }) => {
   const totalRevenue = await getTotalRevenue(params.storeId)
   const salesCount = await getSalesCount(params.storeId)
   const stockCount = await getStockCount(params.storeId)
+  const graphRevenue = await getGraphRevenue(params.storeId)
 
   return (
     <div className='flex-col'>
@@ -54,6 +57,14 @@ const DashboardPage: React.FC<DashboardPageProps> = async ({ params }) => {
             </CardContent>
           </Card>
         </div>
+        <Card className='col-span-4'>
+          <CardHeader>
+            <CardTitle>Overview</CardTitle>
+            <CardContent className='pl-2'>
+              <Overview data={graphRevenue} />
+            </CardContent>
+          </CardHeader>
+        </Card>
       </div>
     </div>
   )

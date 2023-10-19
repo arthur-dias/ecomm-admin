@@ -11,3 +11,5 @@
 - [Prisma](https://www.prisma.io/)
 - [PlanetScale](https://planetscale.com/)
 - [Cloudinary](https://cloudinary.com/)
+- [Stripe](https://stripe.com/)
+- [Recharts](https://recharts.org/en-US/)
