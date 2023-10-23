@@ -18,8 +18,8 @@ O front desse projeto pode ser acessado em https://ecomm-store-olive.vercel.app/
 - Na pasta raiz do projeto, no terminal, rodar `npm install`
 - Na pasta raiz do projeto, criar um arquivo `.env` e adicionar as seguintes chaves:
 
-`
-#FROM CLERK AUTH
+```
+#FROM CLERK AUTH 
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_key
 CLERK_SECRET_KEY=your_key
 NEXT_PUBLIC_CLERK_SIGN_IN_URL=/yourchosenroute
@@ -34,9 +34,7 @@ NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME="yourcloudname"
 STRIPE_API_KEY=yourkey
 FRONTEND_STORE_URL=yourfrontendstoreurl
 STRIPE_WEBHOOK_SECRET=yourkey
-`
-
-
+```
 
 - No terminal, rodar `npm run dev`
 - Acessar por http://localhost:3000/
