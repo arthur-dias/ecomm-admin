@@ -42,6 +42,8 @@ STRIPE_WEBHOOK_SECRET=yourkey
 - No terminal, rodar `npm run dev`
 - Acessar por http://localhost:3000/
 
+---
+
 ## Tech Stack
 
 - [Next.js](https://nextjs.org/)
