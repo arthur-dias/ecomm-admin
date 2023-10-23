@@ -57,7 +57,7 @@ export async function DELETE(
       return new NextResponse('Unauthorized', { status: 405 })
     }
 
-    const product = await prismadb.product.delete({
+    const product = await prismadb.product.deleteMany({
       where: {
         id: params.productId,
       },
